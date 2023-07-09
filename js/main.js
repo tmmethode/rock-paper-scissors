@@ -11,8 +11,6 @@ function getComputerChoice() {
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
 function playRound(playerSelection, computerSelection) {
     if (computerSelection == "rock" && playerSelection == "scissors") {
         return "Computer won! rock beat scissors";
@@ -32,12 +30,50 @@ function playRound(playerSelection, computerSelection) {
     else if (computerSelection == "paper" && playerSelection == "scissors") {
         return "player won! scissors beat paper";
     }
-    else
-    {
+    else {
         return "the game become tie";
     }
 }
 
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+let pointC = 0;
+let pointP = 0;
+function game() {
+    var comp;
+    var user;
+    for (let i = 1; i <= 5; i++) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = prompt("Enter rock paper or scissors in lowercase").toLowerCase();
+
+        if (playRound(playerSelection, computerSelection).includes('Computer')) {
+            pointC = pointC + 1;
+        }
+        else if (playRound(playerSelection, computerSelection).includes('Player')) {
+            pointP = pointP + 1;
+        }
+
+        console.log("Computer Selection:", computerSelection);
+        console.log("Player Selection: ", playerSelection);
+
+        console.log("Computer Results:", pointC);
+        console.log("Player Results:", pointP);
+        comp = pointC;
+        user = pointP;
+    }
+    console.log("FINAL RESULTS PLAYER:", user);
+    console.log("FINAL RESULTS COMPUTER:", comp);
+    
+
+
+    if (comp > user) {
+        console.log("computer won the game!!");
+    }
+    else if (user > comp) {
+        console.log(" Wow Player won the game!!");
+    }
+    else if (user == comp) {
+        console.log("THE GAME BECOMES TIE!");
+    }
+}
+console.log(game());
+
 
